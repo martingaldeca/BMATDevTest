@@ -1,0 +1,55 @@
+{% extends 'admin/change_form.html' %}
+
+{% block content %}
+    <form method="post">{% csrf_token %}
+        <span>{{ labels.name_label }}</span>
+        <label>
+            <input type="text" value="" name="name">
+        </label>
+
+        <p></p>
+        <span>{{ labels.opportunity_types_label }}</span>
+        <label>
+            <select name="opportunity_type">
+                {% for valid_opportunity_type in opportunity_types %}
+                    <option value="{{ valid_opportunity_type.value }}">{{ valid_opportunity_type.label }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <p></p>
+        <span>{{ labels.urgent_label }}</span>
+        <label>
+            <input type="checkbox" name="urgent">
+        </label>
+
+        <p></p>
+        <span>{{ labels.difficult_label }}</span>
+        <label>
+            <input type="checkbox" name="difficult">
+        </label>
+
+        <p></p>
+        <span>{{ labels.notes_to_validation_label }}</span>
+        <label>
+            <input type="text" value="" name="notes_to_validation">
+        </label>
+
+        <p></p>
+        <span>{{ labels.notes_to_recruitment_label }}</span>
+        <label>
+            <input type="text" value="" name="notes_to_recruitment">
+        </label>
+
+        <p></p>
+        <span>{{ labels.notes_to_administration_label }}</span>
+        <label>
+            <input type="text" value="" name="notes_to_administration">
+        </label>
+
+        <div class="submit-row">
+            <input type="submit" value="{{ labels.first_step_button_label }}" name="_create_opportunity">
+        </div>
+    </form>
+{% endblock %}
+

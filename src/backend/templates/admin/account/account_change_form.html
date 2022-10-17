@@ -1,0 +1,12 @@
+{% extends 'admin/change_form.html' %}
+
+{% block object-tools-items %}
+    <form method="post">{% csrf_token %}
+        <div class="submit-row">
+                <input class="historylink" type="submit" value="{{ labels.top_button_label }}" name="_add_opportunity">
+        </div>
+    </form>
+
+    {{ block.super }}
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{# Template: your_app/templates/admin/base_site.html #}
+{% extends "admin/base_site.html" %}
+{% load static i18n %}
+
+{# Setup favicon #}
+{% block extrahead %}
+<link rel="shortcut icon" type="image/png" href="{% static 'logo/bmat_logo.png' %}"/>
+{% endblock %}
+
+{# Setup browser tab label #}
+{% block title %}{{ title }} |  BMAT{% endblock %}
+
+{# Setup branding #}
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        {# Your logo here #}
+        <img
+                src="{% static 'logo/bmat_logo.png' %}"
+                alt="BMAT"
+                height="50%"
+                width="50%"
+        >
+        <br><br>
+        </span> BMAT
+        <br><br>
+    </a>
+</h1>
+{% endblock %}

@@ -1,0 +1,416 @@
+{
+	"info": {
+		"_postman_id": "b473ad8a-e62b-463b-884b-0d0b8cc376ac",
+		"name": "BMATTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10798343"
+	},
+	"item": [
+		{
+			"name": "ShortCsv",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"pm.environment.set(\"token\", data.access);",
+									"",
+									"pm.test(\"Login valid\", () => {",
+									"    pm.expect(pm.response.code).to.eql(200)    ",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3141/api/login/",
+							"host": [
+								"localhost"
+							],
+							"port": "3141",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProcessFile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"pm.environment.set(\"uuid\", data.uuid);",
+									"",
+									"pm.test(\"Login valid\", () => {",
+									"    pm.expect(pm.response.code).to.eql(201)    ",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/martin/Escritorio/test.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3141/api/process_file/",
+							"host": [
+								"localhost"
+							],
+							"port": "3141",
+							"path": [
+								"api",
+								"process_file",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProcessSameFile409",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"pm.test(\"Login valid\", () => {",
+									"    pm.expect(data.uuid).to.deep.eql(pm.environment.get('uuid'))",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/martin/Escritorio/test.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3141/api/process_file/",
+							"host": [
+								"localhost"
+							],
+							"port": "3141",
+							"path": [
+								"api",
+								"process_file",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CsvTaskResult",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3141/api/csv_task_result/{{uuid}}/",
+							"host": [
+								"localhost"
+							],
+							"port": "3141",
+							"path": [
+								"api",
+								"csv_task_result",
+								"{{uuid}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LongCsv",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"pm.environment.set(\"token\", data.access);",
+									"",
+									"pm.test(\"Login valid\", () => {",
+									"    pm.expect(pm.response.code).to.eql(200)    ",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3141/api/login/",
+							"host": [
+								"localhost"
+							],
+							"port": "3141",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProcessFile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"pm.environment.set(\"uuid\", data.uuid);",
+									"",
+									"pm.test(\"Login valid\", () => {",
+									"    pm.expect(pm.response.code).to.eql(200)    ",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/martin/Escritorio/big_test_data.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3141/api/process_file/",
+							"host": [
+								"localhost"
+							],
+							"port": "3141",
+							"path": [
+								"api",
+								"process_file",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProcessSameFile409",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"pm.test(\"Login valid\", () => {",
+									"    pm.expect(data.uuid).to.deep.eql(pm.environment.get('uuid'))",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/martin/Escritorio/big_test_data.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3141/api/process_file/",
+							"host": [
+								"localhost"
+							],
+							"port": "3141",
+							"path": [
+								"api",
+								"process_file",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CsvTaskResultNotProcessedYet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"pm.test(\"Login valid\", () => {",
+									"    pm.expect(data.message).to.deep.eql(\"Task is not processed yet, please wait\")",
+									"})",
+									"",
+									"// Wait until file is processed",
+									"setTimeout(function(){",
+									"    console.log(\"Sleeping for 5 minutes before next request.\");",
+									"}, ",
+									"60000 * 5",
+									");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3141/api/csv_task_result/{{uuid}}/",
+							"host": [
+								"localhost"
+							],
+							"port": "3141",
+							"path": [
+								"api",
+								"csv_task_result",
+								"{{uuid}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

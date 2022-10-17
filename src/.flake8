@@ -1,0 +1,10 @@
+[flake8]
+max-line-length = 160
+exclude = */migrations/*, apps/data/initial_loader/loader.py
+per-file-ignores =
+    __init__.py: F401, F403
+    backend/settings/settings.py: F401, F403
+    apps/*/apps.py: F401
+    backend/celery_backend/celery.py: F401
+
+max-complexity = 10

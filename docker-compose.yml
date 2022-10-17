@@ -1,0 +1,110 @@
+version: '3.3'
+services:
+  backend:
+    container_name: ${PROJECT_NAME}_backend
+    hostname: backend
+    restart: always
+    image: ${PROJECT_NAME}_backend_image
+    build:
+      context: .
+      dockerfile: docker/src/Dockerfile
+    command: sh post_deploy.sh
+    volumes:
+      - ./src:/src/
+      - vol_logs:/src/logs
+      - vol_media:/src/media
+    env_file:
+      - .env
+      - .env-local
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    links:
+      - postgres
+      - broker
+    depends_on:
+      - postgres
+      - broker
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 50m
+        max-file: "2"
+  worker:
+    container_name: ${PROJECT_NAME}_worker
+    hostname: worker
+    image: ${PROJECT_NAME}_backend_image
+    restart: always
+    env_file:
+      - .env
+      - .env-local
+    environment:
+      WORKER_NAME: default_worker
+      WORKER_QUEUES: default
+    command: sh run_worker.sh
+    volumes:
+      - ./src:/src/
+      - vol_logs:/src/logs
+      - vol_media:/src/media
+    depends_on:
+      - backend
+      - broker
+    links:
+      - postgres
+      - broker
+  beat:
+    container_name: ${PROJECT_NAME}_beat
+    hostname: beat
+    image: ${PROJECT_NAME}_backend_image
+    restart: always
+    env_file:
+      - .env
+      - .env-local
+    environment:
+      WORKER_NAME: beat_worker
+      WORKER_QUEUES: default
+    command: sh run_beat.sh
+    volumes:
+      - ./src:/src/
+      - vol_logs:/src/logs
+      - vol_media:/src/media
+    depends_on:
+      - broker
+      - worker
+    links:
+      - postgres
+      - broker
+  postgres:
+    image: postgres:14
+    container_name: ${PROJECT_NAME}_postgres
+    hostname: postgres
+    restart: 'always'
+    env_file:
+      - .env
+      - .env-local
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 50m
+        max-file: "2"
+    ports:
+      - "${POSTGRES_EXTERNAL_PORT}:5432"
+    volumes:
+      - vol_postgres_db:/var/lib/postgresql/data
+      - vol_logs:/logs
+      - vol_media:/src/media
+  broker:
+    hostname: "broker"
+    container_name: ${PROJECT_NAME}_broker
+    image: rabbitmq:3
+    env_file:
+      - .env
+      - .env-local
+    volumes: # In order to update max celery task time
+      - ./docker/broker/rabbitmq_advanced.config:/etc/rabbitmq/advanced.config
+volumes:
+  vol_media:
+    driver: local
+  vol_logs:
+    driver: local
+  vol_postgres_db:
+    driver: local

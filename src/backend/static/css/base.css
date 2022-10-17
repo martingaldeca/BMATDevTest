@@ -1,0 +1,28 @@
+.content {
+    max-width: 500px;
+    margin: auto;
+    text-align: justify;
+}
+
+section {
+    background: white;
+}
+
+footer {
+    background: white;
+}
+
+h1 {
+    text-align: center;
+    background: #50933e;
+
+}
+
+p, h3 {
+    padding: 10px;
+    text-align: center;
+}
+
+h5 {
+    padding: 10px;
+}

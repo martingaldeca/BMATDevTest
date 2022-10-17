@@ -1,0 +1,90 @@
+# BMATDevTest messages.
+# FIRST AUTHOR <martingaldeca@gmail.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-17 00:56+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/data_processor/models/csv_task.py:17
+msgid "Output csv"
+msgstr "Csv de salida"
+
+#: apps/data_processor/models/csv_task.py:18
+#: apps/data_processor/models/csv_task.py:35
+msgid "Csv inputted to be processed."
+msgstr "Csv de entrada a ser procesado."
+
+#: apps/data_processor/models/csv_task.py:22
+msgid "CSV task file"
+msgstr "Fichero de tarea csv"
+
+#: apps/data_processor/models/csv_task.py:23
+msgid "CSV tasks files"
+msgstr "Ficheros de tareas csv"
+
+#: apps/data_processor/models/csv_task.py:34
+msgid "Input csv"
+msgstr "Csv de entrada"
+
+#: apps/data_processor/models/csv_task.py:39
+msgid "Output files"
+msgstr "Ficheros de salida"
+
+#: apps/data_processor/models/csv_task.py:40
+msgid "Csv task's output files"
+msgstr "Ficheros de salidas de tareas csv"
+
+#: apps/data_processor/models/csv_task.py:49
+msgid "Initial input file name"
+msgstr "Nombre inicial de fichero de entrada"
+
+#: apps/data_processor/models/csv_task.py:51
+msgid ""
+"This field is used to compare if a file was previously processed. Can not be "
+"2 CSVTasks with same initial input file name. We will assume that if ity is "
+"the case the file was previusly processed."
+msgstr ""
+"Este campo se utiliza para comparar si un archivo fue procesado previamente. "
+"No puede haber 2 CSVTasks con el mismo nombre de archivo de entrada inicial. "
+"Asumiremos que si es el caso el archivo fue procesado previamente."
+
+#: apps/data_processor/models/csv_task.py:57
+msgid "Error processing"
+msgstr "Error procesando"
+
+#: apps/data_processor/models/csv_task.py:58
+msgid "Field that shows if there was any error processing the file"
+msgstr "Campo que indica si ha habído algún error procesando el fichero"
+
+#: apps/data_processor/models/csv_task.py:64
+msgid "Error message"
+msgstr "Mensaje de error"
+
+#: apps/data_processor/models/csv_task.py:65
+msgid "If the csv process had any error the message will be stored here"
+msgstr "Si el proceso csv tuvo algún error, el mensaje se almacenará aquí"
+
+#: apps/data_processor/models/csv_task.py:69
+msgid "CSV task"
+msgstr "Tarea de CSV"
+
+#: apps/data_processor/models/csv_task.py:70
+msgid "CSV tasks"
+msgstr "Tareas de CSV"
+
+#: backend/settings/jet_configuration.py:4
+msgid "Users"
+msgstr "Usuarios"
+
+#: backend/settings/jet_configuration.py:11
+msgid "CSVTasks"
+msgstr "Tareas de csv"

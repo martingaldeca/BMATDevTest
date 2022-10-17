@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["martingc <martingaldeca@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.0"
+ipython = "^8.4.0"
+setuptools = "*"
+gunicorn = "^20.1.0"
+httptools = "^0.4.0"
+psycopg2 = {version = "^2.9.3", extras = ["production"]}
+django-extensions = "^3.2.0"
+django-debug-toolbar = "^3.5.0"
+django-simple-history = "^3.1.1"
+django-model-utils = "^4.2.0"
+whitenoise = "^6.2.0"
+flake8 = "^5.0.4"
+pytest-django = "^4.5.2"
+factory-boy = "^3.2.1"
+ipdb = "^0.13.9"
+freezegun = "^1.2.1"
+pytest-xdist = "^2.5.0"
+djangorestframework = "3.13.1"  # In order to use drf-spectacular must fix the previous version
+django-cors-headers = "^3.13.0"
+djangorestframework-simplejwt = "^5.2.0"
+drf-api-logger = "^1.1.10"
+user-agents = "^2.2.0"
+celery = "^5.2.7"
+requests = "^2.28.1"
+kombu = "^5.2.4"
+future = "^0.18.2"
+django-celery-beat = "^2.3.0"
+django-4-jet = "^1.0.9"
+django-axes = "^5.36.0"
+drf-spectacular = "^0.23.1"
+drf-spectacular-sidecar = "^2022.8.1"
+pytz = "2022.1"
+pandas = "^1.5.0"
+numpy = "^1.23.4"
+dask = "^2022.10.0"
+fastparquet = "^0.8.3"
+pyarrow = "^9.0.0"
+
+[tool.poetry.dev-dependencies]
+psycopg2-binary = "^2.9.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
