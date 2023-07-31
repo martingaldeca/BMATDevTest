@@ -33,7 +33,7 @@ class CSVTaskFactory(DjangoModelFactory):
         if _min > _max:
             raise ValueError('min value lower than max in factory')
         if _total != 0:
-            for i in range(random.randint(_min, _max)):
+            for _ in range(random.randint(_min, _max)):
                 CSVTaskFileRelationFactory(csv_task=self, csv_task_file=CSVTaskFileFactory())
 
 

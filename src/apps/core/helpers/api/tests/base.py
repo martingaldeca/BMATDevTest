@@ -21,7 +21,7 @@ class APITestBase(APITestCase):
             }
         )
         token = response.data['access']
-        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token)
+        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
         self.request = APIRequestFactory().get(self.url)
         self.request.user = self.user
         self.test_context = {'request': self.request}

@@ -39,7 +39,7 @@ class Command(BaseCommand):
             while os.path.getsize(f'apps/data_processor/csvs/in/{file_name}') < total_size:
 
                 # Only 5 letters in order to repeat values
-                song_name = ''.join(random.choice(string.ascii_lowercase) for i in range(4))
+                song_name = ''.join(random.choice(string.ascii_lowercase) for _ in range(4))
                 date = fuzzy.FuzzyDate(datetime.date(1994, 8, 8)).fuzz().isoformat()
                 song_plays = random.randint(1, 100000)
                 file_object.write(f'{song_name},{date},{song_plays}\n')
